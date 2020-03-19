@@ -1,0 +1,966 @@
+{
+	"name": "wallaby-vscode",
+	"displayName": "Wallaby.js",
+	"description": "Integrated Continuous Testing Tool for JavaScript.",
+	"version": "1.0.184",
+	"author": "Wallaby.js",
+	"homepage": "http://wallabyjs.com",
+	"bugs": {
+		"url": "https://github.com/wallabyjs/public/issues"
+	},
+	"publisher": "WallabyJs",
+	"repository": {},
+	"engines": {
+		"vscode": "^1.25.0"
+	},
+	"keywords": [
+		"testing",
+		"runner",
+		"unittest",
+		"JavaScript",
+		"TypeScript"
+	],
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./index",
+	"icon": "images/logo.png",
+	"galleryBanner": {
+		"color": "#ffffff",
+		"theme": "light"
+	},
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "wallaby",
+					"title": "Wallaby Tools",
+					"icon": "images/logo.svg"
+				}
+			]
+		},
+		"views": {
+			"wallaby": [
+				{
+					"id": "wallaby.valueExplorer",
+					"name": "Value Explorer",
+					"when": "wallaby.started && wallaby.reportedAtLeastOnceLogValue"
+				},
+				{
+					"id": "wallaby.traceExplorer",
+					"name": "Debugger",
+					"when": "wallaby.traceBeingNavigated"
+				},
+				{
+					"id": "wallaby.testFileCoverageExplorer",
+					"name": "Test File Coverage",
+					"when": "wallaby.started"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "wallaby.start",
+				"title": "Start",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.stop",
+				"title": "Stop",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.showCommandPalette",
+				"title": "Show Commands",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.jumpToFailingTest",
+				"title": "Jump to Failing Test",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.jumpToErrorSource",
+				"title": "Jump to Error Source",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.toggleUncovered",
+				"title": "Toggle Uncovered Code Regions",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.showLineTests",
+				"title": "Show Line Tests",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.showLineTestsFromMenu",
+				"title": "Wallaby.js: Show Line Tests",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.showFailingTests",
+				"title": "Show Failing Tests",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.showSideBySideDiff",
+				"title": "Show Side-by-Side Diff",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.runProjectTests",
+				"title": "Run Project Tests",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.runFileTests",
+				"title": "Run File Tests",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.runLineTests",
+				"title": "Run Line Tests",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.startExclusively",
+				"title": "Start Exclusive Test Run",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.startExclusivelyFromMenu",
+				"title": "Wallaby.js: Start Exclusive Test Run",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.addToExclusiveTestRun",
+				"title": "Add To Exclusive Test Run",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.addToExclusiveTestRunFromMenu",
+				"title": "Wallaby.js: Add To Exclusive Test Run",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.updateProjectSnapshots",
+				"title": "Update Project Snapshots",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.updateFileSnapshots",
+				"title": "Update File Snapshots",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.updateTestSnapshots",
+				"title": "Update Test Snapshots",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.showValue",
+				"title": "Show Value",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.copyValue",
+				"title": "Copy Value",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.openWallabyApp",
+				"title": "Launch Coverage & Test Explorer",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.selectConfigFile",
+				"title": "Select Configuration",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.showLastScreenshot",
+				"title": "Show Last Screenshot",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.showLicense",
+				"title": "Manage License Key",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.copyExpressionPath",
+				"title": "Copy Path",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.copyExpressionData",
+				"title": "Copy Data",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.goToExpressionSource",
+				"title": "Go to Source",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.copyDiagnosticsReportToClipboard",
+				"title": "Copy Diagnostics Report",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.runModeOnSave",
+				"title": "Make Current Session Run Only on Save",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.runModeImmediate",
+				"title": "Make Current Session Run on Any Change",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.runModeToggle",
+				"title": "Toggle Current Session Run Mode (Any Change/On Save)",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.forceCoreUpdate",
+				"title": "Force Core Update",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.toggleTestFilter",
+				"title": "Toggle Test Filter",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.resetTestFilter",
+				"title": "Reset Test Filter",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.resetUncovered",
+				"title": "Reset Uncovered Code Regions",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.playTraceNextStep",
+				"title": "Step Into",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/debug-step-into.dark.svg",
+					"light": "images/debug-step-into.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.playTracePrevStep",
+				"title": "Step Back Into",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/debug-step-into-back.dark.svg",
+					"light": "images/debug-step-into-back.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.playTraceForwardToSelection",
+				"title": "Run to Active Line",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/debug-continue.dark.svg",
+					"light": "images/debug-continue.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.playTraceBackwardToSelection",
+				"title": "Run Back to Active Line",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/debug-continue-back.dark.svg",
+					"light": "images/debug-continue-back.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.playTraceNextStepOver",
+				"title": "Step Over",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/debug-step-over.dark.svg",
+					"light": "images/debug-step-over.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.playTracePrevStepOver",
+				"title": "Step Back Over",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/debug-step-over-back.dark.svg",
+					"light": "images/debug-step-over-back.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.playTraceNextStepOut",
+				"title": "Step Out",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/debug-step-out.dark.svg",
+					"light": "images/debug-step-out.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.playTracePrevStepOut",
+				"title": "Step Back Out",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/debug-step-out-back.dark.svg",
+					"light": "images/debug-step-out-back.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.openCallStackFrame",
+				"title": "Open Call Stack Frame",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.revealTraceStep",
+				"title": "Reveal Trace Step",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.stopTraceNavigation",
+				"title": "Stop Debugger",
+				"category": "Wallaby.js",
+				"icon": {
+					"dark": "images/stop.dark.svg",
+					"light": "images/stop.light.svg"
+				}
+			},
+			{
+				"command": "wallaby.statusBarCommand",
+				"title": "Status Bar Command",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.debugTest",
+				"title": "Debug Test",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.jumpToTest",
+				"title": "Jump to Test",
+				"category": "Wallaby.js"
+			},
+			{
+				"command": "wallaby.openFile",
+				"title": "Open File",
+				"category": "Wallaby.js"
+			}
+		],
+		"menus": {
+			"extension/context": [
+				{
+					"command": "wallaby.showLicense",
+					"when": "extensionStatus == installed"
+				},
+				{
+					"command": "wallaby.forceCoreUpdate",
+					"when": "extensionStatus == installed"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "wallaby.startExclusivelyFromMenu",
+					"when": "!wallaby.started && explorerResourceIsFolder && resourceFilename != .idea && resourceFilename != .vs && resourceFilename != .vscode && resourceFilename != node_modules || !wallaby.started && resourceLangId == javascript && resourceFilename =~ /^(?!wallaby).*\\.js$/ && resourceFilename != jest.config.js || !wallaby.started && resourceLangId == javascriptreact || !wallaby.started && resourceLangId == typescript || !wallaby.started && resourceLangId == typescriptreact || !wallaby.started && resourceLangId == coffeescript || !wallaby.started && resourceLangId == vue",
+					"group": "WallabyGroup@1"
+				},
+				{
+					"command": "wallaby.addToExclusiveTestRunFromMenu",
+					"when": "wallaby.started && explorerResourceIsFolder && resourceFilename != .idea && resourceFilename != .vs && resourceFilename != .vscode && resourceFilename != node_modules || wallaby.started && resourceLangId == javascript && resourceFilename =~ /^(?!wallaby).*\\.js$/ && resourceFilename != jest.config.js || wallaby.started && resourceLangId == javascriptreact || wallaby.started && resourceLangId == typescript || wallaby.started && resourceLangId == typescriptreact || wallaby.started && resourceLangId == coffeescript || wallaby.started && resourceLangId == vue",
+					"group": "WallabyGroup@1"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "wallaby.playTraceBackwardToSelection",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-999"
+				},
+				{
+					"command": "wallaby.playTracePrevStepOut",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-998"
+				},
+				{
+					"command": "wallaby.playTracePrevStep",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-997"
+				},
+				{
+					"command": "wallaby.playTracePrevStepOver",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-996"
+				},
+				{
+					"command": "wallaby.stopTraceNavigation",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-995"
+				},
+				{
+					"command": "wallaby.playTraceNextStepOver",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-994"
+				},
+				{
+					"command": "wallaby.playTraceNextStep",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-993"
+				},
+				{
+					"command": "wallaby.playTraceNextStepOut",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-992"
+				},
+				{
+					"command": "wallaby.playTraceForwardToSelection",
+					"when": "wallaby.started && wallaby.traceBeingNavigated",
+					"group": "navigation@-991"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "wallaby.jumpToFailingTest",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.jumpToErrorSource",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.toggleUncovered",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.showLineTests",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.showLineTestsFromMenu",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.showFailingTests",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.showSideBySideDiff",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.runProjectTests",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.runFileTests",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.runLineTests",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.startExclusively",
+					"when": "activeEditor"
+				},
+				{
+					"command": "wallaby.startExclusivelyFromMenu",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.addToExclusiveTestRun",
+					"when": "activeEditor && wallaby.started"
+				},
+				{
+					"command": "wallaby.addToExclusiveTestRunFromMenu",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.updateProjectSnapshots",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.updateFileSnapshots",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.updateTestSnapshots",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.showValue",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.copyValue",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.openWallabyApp",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.showLastScreenshot",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.copyDiagnosticsReportToClipboard",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.runModeOnSave",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.runModeImmediate",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.runModeToggle",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.copyExpressionPath",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.copyExpressionData",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.goToExpressionSource",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.toggleTestFilter",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.resetTestFilter",
+					"when": "wallaby.started && wallaby.testFilterToggled"
+				},
+				{
+					"command": "wallaby.resetUncovered",
+					"when": "wallaby.started && wallaby.uncoveredToggled"
+				},
+				{
+					"command": "wallaby.playTraceNextStep",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.playTracePrevStep",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.playTraceForwardToSelection",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.playTraceBackwardToSelection",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.playTraceNextStepOver",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.playTracePrevStepOver",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.playTraceNextStepOut",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.playTracePrevStepOut",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.openCallStackFrame",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.revealTraceStep",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.stopTraceNavigation",
+					"when": "wallaby.started && wallaby.traceBeingNavigated"
+				},
+				{
+					"command": "wallaby.statusBarCommand",
+					"when": "false"
+				},
+				{
+					"command": "wallaby.debugTest",
+					"when": "wallaby.started && activeEditor"
+				},
+				{
+					"command": "wallaby.jumpToTest",
+					"when": "wallaby.started"
+				},
+				{
+					"command": "wallaby.openFile",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "wallaby.playTraceBackwardToSelection",
+					"when": "view =~ /wallaby.traceExplorer/",
+					"group": "navigation@1"
+				},
+				{
+					"command": "wallaby.playTracePrevStepOut",
+					"when": "view =~ /wallaby.traceExplorer/",
+					"group": "navigation@2"
+				},
+				{
+					"command": "wallaby.playTracePrevStep",
+					"when": "view =~ /wallaby.traceExplorer/",
+					"group": "navigation@3"
+				},
+				{
+					"command": "wallaby.playTracePrevStepOver",
+					"when": "view =~ /wallaby.traceExplorer/",
+					"group": "navigation@4"
+				},
+				{
+					"command": "wallaby.stopTraceNavigation",
+					"when": "view =~ /wallaby.traceExplorer/ && wallaby.traceBeingNavigated",
+					"group": "navigation@5"
+				},
+				{
+					"command": "wallaby.playTraceNextStepOver",
+					"when": "view =~ /wallaby.traceExplorer/",
+					"group": "navigation@6"
+				},
+				{
+					"command": "wallaby.playTraceNextStep",
+					"when": "view =~ /wallaby.traceExplorer/",
+					"group": "navigation@7"
+				},
+				{
+					"command": "wallaby.playTraceNextStepOut",
+					"when": "view =~ /wallaby.traceExplorer/",
+					"group": "navigation@8"
+				},
+				{
+					"command": "wallaby.playTraceForwardToSelection",
+					"when": "view =~ /wallaby.traceExplorer/",
+					"group": "navigation@9"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "wallaby.copyExpressionPath",
+					"when": "viewItem =~ /WallabyAllowToCopyPath/"
+				},
+				{
+					"command": "wallaby.copyExpressionData",
+					"when": "viewItem =~ /WallabyAllowToCopyData/"
+				},
+				{
+					"command": "wallaby.goToExpressionSource",
+					"when": "viewItem =~ /WallabyAllowToGoToSource/"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "wallaby.showLineTestsFromMenu",
+					"group": "WallabyGroup@1",
+					"when": "wallaby.started"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "wallaby.showCommandPalette",
+				"key": "ctrl+shift+=",
+				"mac": "cmd+shift+="
+			},
+			{
+				"command": "wallaby.start",
+				"key": "ctrl+shift+r r",
+				"mac": "cmd+shift+r r"
+			},
+			{
+				"command": "wallaby.stop",
+				"key": "ctrl+shift+r s",
+				"mac": "cmd+shift+r s"
+			},
+			{
+				"command": "wallaby.runProjectTests",
+				"key": "ctrl+shift+r p",
+				"mac": "cmd+shift+r p",
+				"when": "wallaby.started"
+			},
+			{
+				"command": "wallaby.showLastScreenshot",
+				"key": "ctrl+shift+r h",
+				"mac": "cmd+shift+r h",
+				"when": "wallaby.started"
+			},
+			{
+				"command": "wallaby.runLineTests",
+				"key": "ctrl+shift+r c",
+				"mac": "cmd+shift+r c",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.runFileTests",
+				"key": "ctrl+shift+r f",
+				"mac": "cmd+shift+r f",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.jumpToFailingTest",
+				"key": "ctrl+shift+r o",
+				"mac": "cmd+shift+r o",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.jumpToErrorSource",
+				"key": "ctrl+shift+r p",
+				"mac": "cmd+shift+r p",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.toggleUncovered",
+				"key": "ctrl+shift+r u",
+				"mac": "cmd+shift+r u",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.showFailingTests",
+				"key": "ctrl+shift+r t",
+				"mac": "cmd+shift+r t",
+				"when": "wallaby.started"
+			},
+			{
+				"command": "wallaby.showLineTests",
+				"key": "ctrl+shift+r l",
+				"mac": "cmd+shift+r l",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.showSideBySideDiff",
+				"key": "ctrl+shift+r d",
+				"mac": "cmd+shift+r d",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.showValue",
+				"key": "ctrl+shift+r v",
+				"mac": "cmd+shift+r v",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.copyValue",
+				"key": "ctrl+shift+r x",
+				"mac": "cmd+shift+r x",
+				"when": "wallaby.started && editorTextFocus"
+			},
+			{
+				"command": "wallaby.resetUncovered",
+				"key": "Escape",
+				"mac": "Escape",
+				"when": "wallaby.started && wallaby.uncoveredToggled && editorTextFocus"
+			},
+			{
+				"command": "wallaby.resetTestFilter",
+				"key": "shift+escape",
+				"mac": "shift+escape",
+				"when": "wallaby.started && wallaby.testFilterToggled && editorTextFocus"
+			},
+			{
+				"command": "wallaby.stopTraceNavigation",
+				"key": "shift+f5",
+				"mac": "shift+f5",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.debugTest",
+				"key": "shift+f5",
+				"mac": "shift+f5",
+				"when": "wallaby.started && !wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.playTraceNextStep",
+				"key": "f11",
+				"mac": "f11",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.playTraceForwardToSelection",
+				"key": "f5",
+				"mac": "f5",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.playTraceNextStepOver",
+				"key": "f10",
+				"mac": "f10",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.playTraceNextStepOut",
+				"key": "shift+f11",
+				"mac": "shift+f11",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.playTracePrevStep",
+				"key": "ctrl+f11",
+				"mac": "ctrl+f11",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.playTraceBackwardToSelection",
+				"key": "ctrl+f5",
+				"mac": "ctrl+f5",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.playTracePrevStepOver",
+				"key": "ctrl+f10",
+				"mac": "ctrl+f10",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			},
+			{
+				"command": "wallaby.playTracePrevStepOut",
+				"key": "ctrl+shift+f11",
+				"mac": "ctrl+shift+f11",
+				"when": "wallaby.started && wallaby.traceBeingNavigated && !inDebugMode"
+			}
+		],
+		"languages": [
+			{
+				"id": "wallaby-output"
+			}
+		],
+		"grammars": [
+			{
+				"language": "wallaby-output",
+				"scopeName": "wallaby.output",
+				"path": "./wallaby-output.tmLanguage.json"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Wallaby configuration",
+			"properties": {
+				"wallaby.startAutomatically": {
+					"description": "Starts Wallaby automatically if Wallaby was running when the folder/workspace was last opened",
+					"type": "boolean",
+					"default": true
+				},
+				"wallaby.useHttpForDownload": {
+					"description": "Use HTTP protocol to download wallaby updates",
+					"type": "boolean",
+					"default": false
+				},
+				"wallaby.strictSSL": {
+					"description": "Use strict SSL to download wallaby updates",
+					"type": "boolean",
+					"default": true
+				},
+				"wallaby.noAutomaticInstall": {
+					"description": "Stop automatic wallaby core updates",
+					"type": "boolean",
+					"default": false
+				},
+				"wallaby.showUpdateNotifications": {
+					"description": "Show wallaby core update notifications",
+					"type": "boolean",
+					"default": true
+				},
+				"wallaby.suppressExpirationNotifications": {
+					"description": "Stop wallaby expiring license update reminders",
+					"type": "boolean",
+					"default": false
+				},
+				"wallaby.node": {
+					"description": "Path to node.js executable that is used to run wallaby core",
+					"type": "string",
+					"default": ""
+				},
+				"wallaby.useWsl": {
+					"description": "Use Windows Subsystem for Linux",
+					"type": "boolean",
+					"default": false
+				},
+				"wallaby.reportFailuresAsProblems": {
+					"description": "Report Failing Tests to the VS Code Problems View",
+					"type": "boolean",
+					"default": true
+				},
+				"wallaby.outputContentSize": {
+					"description": "Wallaby output content limit in bytes",
+					"type": "number",
+					"default": 0
+				},
+				"wallaby.colors": {
+					"description": "Wallaby gutter indicators colors (requires a restart after change)",
+					"type": "object",
+					"default": {
+						"covered": "#62b455",
+						"errorPath": "#ffa0a0",
+						"errorSource": "#fe536a",
+						"notCovered": "#cccccc",
+						"partiallyCovered": "#d2a032"
+					}
+				}
+			}
+		}
+	},
+	"devDependencies": {
+		"grunt": "*",
+		"grunt-babel": "5.0.1",
+		"grunt-browserify": "*",
+		"grunt-bump": "0.0.16",
+		"grunt-contrib-clean": "*",
+		"grunt-contrib-compress": "^0.12.0",
+		"grunt-contrib-copy": "*",
+		"grunt-contrib-uglify": "*",
+		"lodash": "*",
+		"vsce": "^1.46.0",
+		"vscode": "^1.1.21"
+	},
+	"optionalDependencies": {
+		"aws-sdk": "^2.353.0",
+		"keytar": "^4.10.0"
+	},
+	"dependencies": {
+		"adm-zip-mit": "0.4.12",
+		"fs-extra": "0.26.2",
+		"lockfile": "1.0.3",
+		"openurl": "1.1.1",
+		"q": "1.4.1",
+		"request": "2.88.0",
+		"tar-stream": "1.3.1",
+		"unbzip2-stream": "1.0.8"
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"build": "node ./node_modules/grunt/bin/grunt",
+		"pub": "node ./node_modules/grunt/bin/grunt bump-only && npm run build && vsce publish && vsce package && node ./node_modules/grunt/bin/grunt publish-complete",
+		"release": "node ./docker/run.js"
+	},
+	"__metadata": {
+		"id": "6766254a-8e43-4ebc-9b89-e5be39cb5318",
+		"publisherId": "9e43bb4e-4318-4e59-b5c2-df1109a963dd",
+		"publisherDisplayName": "Wallaby.js"
+	}
+}

@@ -1,12 +1,12 @@
 {
-  "editor.fontFamily": "Dank Mono, Operator Mono",
+  "editor.fontFamily": "FiraCode-Retina",
   "editor.tabSize": 2,
   "editor.quickSuggestions": false,
   "editor.parameterHints": false,
   "editor.suggestOnTriggerCharacters": false,
   "editor.hover": false,
-  "editor.fontSize": 16,
-  "editor.fontLigatures": false,
+  "editor.fontSize": 18,
+  "editor.fontLigatures": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
@@ -15,12 +15,15 @@
   "prettier.semi": false,
   "prettier.trailingComma": "none",
   "prettier.arrowParens": "avoid",
-  "workbench.colorTheme": "Night Owl",
+  "workbench.colorTheme": "Night Owl (No Italics)",
   "javascript.validate.enable": false,
   "window.zoomLevel": 1,
   "editor.cursorBlinking": "solid",
   "editor.cursorStyle": "line",
   "editor.minimap.renderCharacters": false,
   "terminal.integrated.fontSize": 14,
-  "explorer.openEditors.visible": 0
+  "explorer.openEditors.visible": 0,
+  "files.autoSave": "onFocusChange",
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on"
 }
